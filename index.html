@@ -21,7 +21,7 @@ body {
     overflow: hidden;
 }
 
-/* Card */
+/* Main Card */
 .card {
     background: rgba(255,255,255,0.96);
     padding: 40px;
@@ -36,6 +36,7 @@ body {
 h1 {
     font-family: 'Playfair Display', serif;
     color: #c9184a;
+    margin-bottom: 5px;
 }
 
 h2 {
@@ -47,6 +48,7 @@ h2 {
 .heart {
     font-size: 42px;
     animation: heartbeat 1.5s infinite;
+    margin: 10px 0;
 }
 
 p {
@@ -77,21 +79,22 @@ button:hover {
     margin-top: 28px;
     font-family: 'Playfair Display', serif;
     font-size: 18px;
+    color: #333;
 }
 
 /* Hug Overlay */
 .hug-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(255, 182, 193, 0.95);
+    background: rgba(255, 182, 193, 0.97);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 1s ease;
-    z-index: 5;
+    transition: opacity 1.2s ease;
+    z-index: 10;
 }
 
 .hug-overlay.active {
@@ -101,7 +104,7 @@ button:hover {
 
 .hug-hearts {
     display: flex;
-    gap: 40px;
+    gap: 120px;
     font-size: 60px;
     animation: hugMove 2s ease forwards;
 }
@@ -143,14 +146,14 @@ button:hover {
     20% { opacity: 1; }
     100% { transform: translateY(-10vh); opacity: 0; }
 }
-
-iframe { display: none; }
 </style>
 </head>
 <body>
 
-<!-- Music -->
-<iframe src="https://www.youtube.com/embed/9jG7U9T9T-0?autoplay=1&loop=1&playlist=9jG7U9T9T-0" allow="autoplay"></iframe>
+<!-- Background Music (starts on click) -->
+<audio id="bgMusic" loop>
+  <source src="https://dl.dropboxusercontent.com/scl/fi/6jv4apocalypse-cas.mp3" type="audio/mpeg">
+</audio>
 
 <div class="card">
     <h1>Qareeba</h1>
@@ -165,7 +168,7 @@ iframe { display: none; }
 
     <p>If love is choosing again, then I choose you — always.</p>
 
-    <button onclick="hug()">Come here… 🫂</button>
+    <button onclick="hug()">Come here… 🫂 (tap once)</button>
 
     <div class="signature">
         — Yours, always<br><strong>Masab</strong>
@@ -184,6 +187,10 @@ iframe { display: none; }
 <script>
 function hug() {
     document.getElementById("hug").classList.add("active");
+
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.6;
+    music.play();
 }
 
 // Floating hearts
@@ -200,3 +207,4 @@ for (let i = 0; i < 18; i++) {
 
 </body>
 </html>
+
