@@ -36,7 +36,6 @@ body {
 h1 {
     font-family: 'Playfair Display', serif;
     color: #c9184a;
-    margin-bottom: 5px;
 }
 
 h2 {
@@ -68,18 +67,12 @@ button {
     font-size: 16px;
     cursor: pointer;
     box-shadow: 0 10px 25px rgba(255,77,109,0.45);
-    transition: 0.25s ease;
-}
-
-button:hover {
-    transform: translateY(-3px);
 }
 
 .signature {
     margin-top: 28px;
     font-family: 'Playfair Display', serif;
     font-size: 18px;
-    color: #333;
 }
 
 /* Hug Overlay */
@@ -93,7 +86,7 @@ button:hover {
     align-items: center;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 1.2s ease;
+    transition: opacity 1s ease;
     z-index: 10;
 }
 
@@ -102,10 +95,15 @@ button:hover {
     pointer-events: all;
 }
 
+/* Hearts */
 .hug-hearts {
     display: flex;
     gap: 120px;
-    font-size: 60px;
+    font-size: 64px;
+}
+
+/* 🔥 Animation TRIGGERS ONLY AFTER CLICK */
+.hug-overlay.active .hug-hearts {
     animation: hugMove 2s ease forwards;
 }
 
@@ -150,7 +148,7 @@ button:hover {
 </head>
 <body>
 
-<!-- Background Music (starts on click) -->
+<!-- Music (starts on click) -->
 <audio id="bgMusic" loop>
   <source src="https://dl.dropboxusercontent.com/scl/fi/6jv4apocalypse-cas.mp3" type="audio/mpeg">
 </audio>
@@ -161,14 +159,11 @@ button:hover {
 
     <div class="heart">❤️</div>
 
-    <p>I’m deeply sorry for hurting you.  
-    You never deserved that pain.</p>
+    <p>I’m deeply sorry for hurting you.</p>
+    <p>You matter more to me than my mistakes.</p>
+    <p>I choose you — always.</p>
 
-    <p>You matter more to me than my mistakes, my ego, or my pride.</p>
-
-    <p>If love is choosing again, then I choose you — always.</p>
-
-    <button onclick="hug()">Come here… 🫂 (tap once)</button>
+    <button onclick="hug()">Come here… 🫂</button>
 
     <div class="signature">
         — Yours, always<br><strong>Masab</strong>
@@ -194,7 +189,7 @@ function hug() {
 }
 
 // Floating hearts
-for (let i = 0; i < 18; i++) {
+for (let i = 0; i < 16; i++) {
     const h = document.createElement("div");
     h.className = "floating-heart";
     h.innerHTML = "❤️";
@@ -207,4 +202,5 @@ for (let i = 0; i < 18; i++) {
 
 </body>
 </html>
+
 
